@@ -1,3 +1,3 @@
 # ProMan-App
 A fun App that is going to help you to be more organized 
-- not done yet -
+- not finished yet, but it's functional
