@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ProMan</title>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='favicon/favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/solid.css" integrity="sha384-rdyFrfAIC05c5ph7BKz3l5NG5yEottvO/DQ0dCrwD8gzeQDjYBHNr1ucUpQuljos" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/fontawesome.css" integrity="sha384-u5J7JghGz0qUrmEsWzBQkfvc8nK3fUT7DCaQzNQ+q4oEXhGSx+P2OqjWsfIRB8QT" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/design.css') }}" />
+    <script type="module" src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/boards.js') }}" defer></script>
+</head>
+
+<body>
+    <h1>ProMan</h1>
+
+    <div class="links">
+        {% if not user %}
+        <a href="/sign-in">Sign In</a>
+        <a href="/sign-up">Sign Up</a> {% else %}
+        <a href="/#">{{ user }}</a>
+        <a href="/sign-out">Sign Out</a> {% endif %}
+    </div>
+
+    <button id="pop">Create New Board</button>
+    <button id="arrow"><i class="fas fa-chevron-down"></i></button>
+    <button id="delete"><i class="fas fa-trash-alt"></i></button>
+    <div id="info">
+        <button id="arrow" class="hide-me"><i class="fas fa-chevron-down"></i></button>
+        <button id="delete" class="hide-me"><i class="fas fa-trash-alt"></i></button>
+    </div>
+    <div id="popup-bg" class="hide-me"></div>
+    <div id="popup" class="hide-me">
+        <form id="newnameform">
+            <label for="nume">
+                What is the new name?
+                <input type="text" name="nume">
+            </label>
+            <button type="submit">OK</button>
+        </form>
+    </div>
+
+    {% block content %} {% endblock %}
+</body>
+
+</html>
